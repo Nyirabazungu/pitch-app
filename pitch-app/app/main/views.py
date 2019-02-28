@@ -2,12 +2,12 @@ from flask import render_template,request,redirect,url_for,abort
 from . import main
 from .forms import PitchForm,UpdateProfile
 from .. import db
-from ..models import User
+from ..models import User,Pitch,Comment
 from flask_login import login_required,current_user
 from .. import db,photos
 import markdown2  
 
-
+# Pitch = pitch.Pitch
 # @app.route('/')
 # def index():
 
@@ -52,7 +52,7 @@ def update_profile(uname):
         db.session.add(user)
         db.session.commit()
 
-        return redirect(url_for('.profile',uname=user.username))
+    return redirect(url_for('.profile',uname=user.username))
 
     return render_template('profile/update.html',form =form)    
 
