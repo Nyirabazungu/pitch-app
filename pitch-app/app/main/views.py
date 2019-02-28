@@ -128,7 +128,7 @@ def new_pitch():
 
         # savedescription method
        new_pitch.save_pitch()
-    return redirect(url_for('.user',id = user.id ))
+    return redirect(url_for('.user',id =current_user.id ))
 
     title = f'{user.title} pitch'
     return render_template('new_pitch.html', pitch_form=form, user= current_user) 
