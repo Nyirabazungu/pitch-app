@@ -20,17 +20,17 @@ class User(UserMixin,db.Model):
     pitches = db.relationship('Pitch',backref = 'user',lazy="dynamic")
     comments = db.relationship('Comment',backref = 'user',lazy="dynamic")
     # Flask-Login integration
-    def is_authenticated(self):
-       return True
+    # def is_authenticated(self):
+    #    return True
 
-    def is_active(self):
-       return True
+    # def is_active(self):
+    #    return True
 
-    def is_anonymous(self):
-       return False
+    # def is_anonymous(self):
+    #    return False
 
-    def get_id(self):
-       return self.id
+    # def get_id(self):
+    #    return self.id
 
    
     @property
