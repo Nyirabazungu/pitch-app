@@ -28,52 +28,6 @@ def index():
     return render_template('index.html', title = title )
 
 
-# @main.route('//<int:id>')
-# def movies(movie_id):
-
-#     '''
-#     View movie page function that returns the movie details page and its data
-#     '''
-#     return render_template('movie.html',id = movie_id)
-# @main.route('/movie/<int:id>')
-# def movie(id):
-
-#     '''
-#     View movie page function that returns the movie details page and its data
-#     '''
-#     user = get_user(id)
-#     title = f'{movie.title}'
-#     pitches = Pitch.get_pitches(movie.id)
-
-#     return render_template('movie.html',title = title,movie = movie,pitches = reviews)
-# @main.route('/search/<movie_name>')
-# def search(movie_name):
-#     '''
-#     View function to display the search results
-#     '''
-#     movie_name_list = movie_name.split(" ")
-#     movie_name_format = "+".join(movie_name_list)
-#     searched_movies = search_movie(movie_name_format)
-#     title = f'search results for {movie_name}'
-#     return render_template('search.html',movies = searched_movies)
-# @main.route('/movie/review/new/<int:id>', methods = ['GET','POST'])
-# @login_required
-# def new_review(id):
-#     form = ReviewForm()
-#     movie = get_movie(id)
-#     if form.validate_on_submit():
-#         title = form.title.data
-#         review = form.review.data
-
-#         # Updated review instance
-#         new_review = Review(movie_id=movie.id,movie_title=title,image_path=movie.poster,movie_review=review,user=current_user)
-
-#         # save review method
-#         new_review.save_review()
-#         return redirect(url_for('.movie',id = movie.id ))
-
-#     title = f'{movie.title} review'
-#     return render_template('new_review.html',title = title, review_form=form, movie=movie)
 @main.route('/user/<uname>')
 def profile(uname):
     user = User.query.filter_by(username = uname).first()
@@ -120,18 +74,17 @@ def new_pitch():
    
     if form.validate_on_submit():
         # title = form.title.data
-       pitches_destription  = form.pitches_destription .data
+       pitches_description  = form.pitches_description .data
        category = form.category.data
 
         # Updateddescription instance
-       new_pitch = Pitch(pitches_destription  = pitches_destription ,category= category ,user_id = current_user.id)
+       new_pitch = Pitch(pitches_description = pitches_description ,category= category ,user_id = current_user.id)
 
         # savedescription method
        new_pitch.save_pitch()
-    return redirect(url_for('.user',id =current_user.id ))
-
-    title = f'{user.title} pitch'
-    return render_template('new_pitch.html', pitch_form=form, user= current_user) 
+    return redirect(url_for('.index'))
+    
+    return render_template('new_pitch.html', pitch_form = form, user = current_user) 
 
 @main.route('/pitch/<int:id>')
 def single_pitch(id):
