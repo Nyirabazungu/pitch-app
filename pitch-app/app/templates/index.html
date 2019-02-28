@@ -1,3 +1,4 @@
+{% macro displayPitchList(pitch_list) %}
 {% extends 'base.html'%}
 <!DOCTYPE html>
 <html>
@@ -6,9 +7,9 @@
         {% if title %}
         <title> {{ title }}</title>
         {% else %}
-        <title> Welcome to the best  Pitch website </title>
-        <!-- {% endif %}
-        {% import 'macros.html' as macro%} -->
+       
+        {% endif %}
+        {% import 'macros.html' as macro%}
 
 <!-- Styles block -->
 
@@ -18,25 +19,10 @@
         {% endblock %}
         
     </head>
-  
+     
     <body>
-   <!-- Content block -->
-   {% block content %}
-    <form>
-<!-- <div class ="pitches">  
-     
-<p>ENTER PITCH</p>       
- <input type="inter pitch"  value="" class="btn btn-default">
-    </form> -->
+ <h1>Welcome to the pitches Application</h1>
 
-<div class="container">
-    <form>
-     
-        <!-- <input type="pitch"  value="Pitch" class="btn btn-default"> -->
-    </form>
-
-</div>
-{% endblock%}
        
 </body>
 </html>
