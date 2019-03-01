@@ -7,16 +7,7 @@ from flask_login import login_required,current_user
 from .. import db,photos
 import markdown2  
 
-# Pitch = pitch.Pitch
-# @app.route('/')
-# def index():
 
-#     '''
-#     View root page function that returns the index page and its data
-#     '''
-
-#     message = 'Hello World'
-#     return render_template('index.html',message = message)
 @main.route('/')
 def index():
 
@@ -82,11 +73,11 @@ def new_pitch():
 
         # savedescription method
        new_pitch.save_pitch()
-    return redirect(url_for('.index'))
+       return redirect(url_for('.index',pitches_description = pitches_description ))
 
-    return render_template('new_pitch.html', pitch_form = form, user = current_user) 
+       return render_template('new_pitch.html', pitch_form = form, user = current_user) 
 
-@main.route('/pitch/<int:id>')
+@main.route('/pitch')
 def single_pitch(id):
     pitch=pitch.query.get(id)
     if pitch is None:
