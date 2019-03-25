@@ -7,13 +7,12 @@ def home(request):
     return render(request,'welcome.html')
 
 @login_required(login_url='/accounts/login/')
-def profile(request):
+def profile(request,profile_id):
     current_user = request.user
     if request.method == 'POST':
         form = ProfileForm(request.POST, request.FILES)
         if form.is_valid():
             profile = form.save(commit=False)
-            profile.editor = current_user
             profile.save()
         return redirect('Welcome')
 
