@@ -3,6 +3,24 @@
 {{ block.super}}
 
 <div class="container">
-  <h1>Welcome</h1>
-<h1>WELCOME</h1>
+
+<body>
+    <div class = "container">
+      <div class="well">
+         <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#demo">PROFILES</button>
+         <div id="demo" class="collapse">
+          {% for pic in profile %}
+          <a href="{%url 'profil' pic.id%}"><p style="color:blanchedalmond;padding:5px;font-size: 20px;font-family: monospace;"><strong>{{pic.first_name}}</strong></p></a>
+          {% endfor %}         
+            
+         </div> 
+      </div>
+
+   {% for pic in images %}
+            
+  <a href="/images/{{pic.id}}"><img src="{{pic.image.url}}" alt="Image"></a>
+  {% endfor %}
+</div>
+</body>
+
 {% endblock %}

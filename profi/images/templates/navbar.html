@@ -6,44 +6,58 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
-<nav class="navbar navbar-inverse">
+<nav style="background-color:rgb(100, 119, 119);padding:50px;font-family: monospace;color:black;">
   <div class="container-fluid">
     <div class="navbar-header">
-      <a class="navbar-brand" href="{% url 'welcome' %}">HOME</a>
+      <a class="navbar-brand" href="{% url 'welcome' %}" style="color:black;"><strong>HOME</strong></a>
+      
     </div>
-  
+ 
   <!--The search form above-->
   <div class="col-sm-6 col-md-6">
         {% if user.is_authenticated %}
         <ul>
           <li class="dropdown">
-            <a href="#" class="dropdown-toggle btn btn-default" data-toggle="dropdown" role="button" aria-expanded="false">Account
+            <a href="#" class="dropdown-toggle btn btn-default" data-toggle="dropdown" role="button" aria-expanded="false"><strong>Account</strong>
                       <span class="caret"></span>
                   </a>
             <ul class="dropdown-menu" role="menu">
               <li>
-                <a href="{%url 'welcome'%}">Home</a>
+                <a href="{%url 'welcome'%}"><strong>Home</strong></a>
               </li>
               <li>
-                <a href="{%url 'profile'%}">Create account</a>
+                <a href="{%url 'profil' user.id%}"><strong>View Profile</strong></a>
+              </li>
+              <li>
+                  <a href="{%url 'profile'%}"><strong>Add Profile</strong></a>
                 </li>
               <li>
-                <a href="/accounts/password/change">Change Password</a>
+                <a href="/accounts/password/change"><strong>Change Password</strong></a>
               </li>
               <li>
-                <a href="/logout">Logout</a>
+                <a href="/logout"><strong>Logout</strong></a>
               </li>
             </ul>
           </li>
-      
+        </ul>
         {% else %}
         <li>
-          <a class='btn btn-default' href="/accounts/login">Login</a>
+          <a class='btn btn-default' href="/accounts/login"><strong>Login</strong></a>
         </li>
 
         {% endif %}
       </div>
+
+      <div class="nav navbar-nav navbar-right">
+
+          <button class="well"><a href="{%url 'image'%}"   style="padding-left:50px;font-family: monospace;color:lightblue;"><strong>Add pictures</strong></a></button>
+   
+         </div>
     </div>  
+
+    <h1 style="background-color:gray ">Welcome to Intagram</h1>
 </nav>
 </body>
 </html>
+
+
